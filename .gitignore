@@ -1,0 +1,10 @@
+# Cache removal
+__pycache__/
+
+# IDE removeal
+/.vscode/
+/bin/
+
+# Generic platform files
+.DS_Store
+desktop.ini
