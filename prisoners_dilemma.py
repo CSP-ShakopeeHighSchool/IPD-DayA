@@ -1,4 +1,6 @@
-from __future__ import print_function
+from importlib import reload
+import random
+import os.path
 
 ##### 
 # Computer Science and Software Engineering
@@ -34,16 +36,12 @@ import random
 import os.path              
     
 import example0, example1, example2, example3
-import example4, example5, example6, example7
-import team0, team1, team2, team3, team4
-import team5, team6, team7, team8, team9
-import team10, team11, team12, team13, team14
+import example4, example5, example6, example7, example8
+import team7
 betray = example1
 collude = example0
 
-modules = [example0, example1, example2, example3, example4, example5, example6, example7,
-team0, team1, team2, team3, team4, team5, team6, team7, team8, team9, team10, 
-team11, team12, team13, team14]
+modules = [example0, example1, example2, example3, example4, example5, example6, example7, example8, team7]
 for module in modules:
     reload(module)
     print ('reloaded',module)
@@ -270,7 +268,7 @@ def make_section2(modules, scores):
                               'P'+str(index),
                               str(sum(scores[index])/len(modules)),
                               str(modules[index].strategy_name)))
-    section2_list.sort(key=lambda x: int(x[2]), reverse=True)
+    section2_list.sort(key=lambda x: float(x[2]), reverse=True)
     
     # Generate one string per team
     # Rockettes (P1):  -500 points with Backstabber
@@ -378,5 +376,5 @@ def post_to_file(string, filename='tournament.txt', directory=''):
  
 ### Call main_play() if this file is executed
 if __name__ == '__main__':
-    scores, moves, reports = main_play(modules[0:4])   
+    scores, moves, reports = main_play(modules[0:])   
     section0, section1, section2, section3 = reports
