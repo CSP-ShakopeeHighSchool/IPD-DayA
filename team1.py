@@ -6,67 +6,12 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'The name the team gives to itself' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
+team_name = 'Ty' # Only 10 chars displayed.
+strategy_name = 'CopyCat until betray twice'
+strategy_description = 'How does this strategy decide? idk you tell me'
     
-def move(my_history, their_history, my_score, their_score):
-    ''' Arguments accepted: my_history, their_history are strings.
-    my_score, their_score are ints.
-    
-    Make my move.
-    Returns 'c' or 'b'. 
-    '''
 
-    # my_history: a string with one letter (c or b) per round that has been played with this opponent.
-    # their_history: a string of the same length as history, possibly empty. 
-    # The first round between these two players is my_history[0] and their_history[0].
-    # The most recent round is my_history[-1] and their_history[-1].
-    
-    # Analyze my_history and their_history and/or my_score and their_score.
-    # Decide whether to return 'c' or 'b'.
-    
-    return 'c'
 
-    
-def test_move(my_history, their_history, my_score, their_score, result):
-    '''calls move(my_history, their_history, my_score, their_score)
-    from this module. Prints error if return value != result.
-    Returns True or False, dpending on whether result was as expected.
-    '''
-    real_result = move(my_history, their_history, my_score, their_score)
-    if real_result == result:
-        return True
-    else:
-        print("move(" +
-            ", ".join(["'"+my_history+"'", "'"+their_history+"'",
-                       str(my_score), str(their_score)])+
-            ") returned " + "'" + real_result + "'" +
-            " and should have returned '" + result + "'")
-        return False
-
-if __name__ == '__main__':
-     
-    # Test 1: Betray on first move.
-    if test_move(my_history='',
-              their_history='', 
-              my_score=0,
-              their_score=0,
-              result='b'):
-         print ('Test passed')
-     # Test 2: Continue betraying if they collude despite being betrayed.
-    test_move(my_history='bbb',
-              their_history='ccc', 
-              # Note the scores are for testing move().
-              # The history and scores don't need to match unless
-              # that is relevant to the test of move(). Here,
-              # the simulation (if working correctly) would have awarded 
-              # 300 to me and -750 to them. This test will pass if and only if
-              # move('bbb', 'ccc', 0, 0) returns 'b'.
-              my_score=0, 
-              their_score=0,
-              result='b')
-    
 
 
 '''
@@ -84,7 +29,7 @@ their_sco = 0
 beys = 0
 cons = 0
 turns = 0
-
+'''
 def movie(my_history, their_history, my_score, their_score):
     attack = 'c'
 
@@ -167,7 +112,7 @@ def ran_ME(): # Personal Random model - - 50/50 Random
         return 'b'
 
 # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv--Pattern Detection--vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-
+'''
 '''
 	2. Try to find patterns
 		a. Number patterns
@@ -183,7 +128,7 @@ def ran_ME(): # Personal Random model - - 50/50 Random
 		a. Change pattern to exploit
 			i. Find pattern and work around it
 '''
-
+'''
 def numPat_eo_ENI():
     c = 0
     b = 0
@@ -207,10 +152,12 @@ switchOfLetter = []
 
 def numPat_pack_ENI():
     '''
+'''
     ### Packs switch lists to what the opponent has enteterd
     \n Goes through list by counting in which order does it
     change and appends how long it took
     '''
+'''
     countss = 0
     tempC = 0
     tempB =  0
@@ -268,12 +215,14 @@ def numPat_pack_ENI():
 
 def numPat_na_ENI():
     '''
+'''
     ### Trys to find basic numeric pattern
     Enter text here
     \n sd
     ### How to write
     check if 
     '''
+'''
     ans = ''
 
     # Every other --------------
@@ -325,10 +274,93 @@ def ert():
     
 
 
-
-prisoners_dilemma.scores
+'''
+#prisoners_dilemma.scores
 
 
 
 # numPat_pack_ENI()
-ert()
+
+
+'''
+////////////////////////////////////////////////////////////////////////////////////////////////////
+'''
+
+
+def move(my_history, their_history, my_score, their_score):
+    ''' Arguments accepted: my_history, their_history are strings.
+    my_score, their_score are ints.
+    
+    Make my move.
+    Returns 'c' or 'b'. 
+    '''
+    my_his = my_history
+    their_his = my_history
+    my_sco = my_score
+    their_sco = their_score
+
+    # my_history: a string with one letter (c or b) per round that has been played with this opponent.
+    # their_history: a string of the same length as history, possibly empty. 
+    # The first round between these two players is my_history[0] and their_history[0].
+    # The most recent round is my_history[-1] and their_history[-1].
+    
+    # Analyze my_history and their_history and/or my_score and their_score.
+    # Decide whether to return 'c' or 'b'.
+    
+    # return 'c'
+    if len(my_history)==0: # It's the first round: collude
+        return 'c'
+    elif 'b' not in their_history and len(their_history)>10:
+        return 'b'
+        
+    else:
+        bey = 0
+        for i in  range(len(their_history)):
+            if their_history[i] == 'b' : # Test to see if this works on most recent
+                bey += 1
+        if bey > 1:
+            return 'b'
+        else:
+            if their_history[-1] == 'c':
+                return 'c'
+            else:
+                return 'b'
+
+    
+def test_move(my_history, their_history, my_score, their_score, result):
+    '''calls move(my_history, their_history, my_score, their_score)
+    from this module. Prints error if return value != result.
+    Returns True or False, dpending on whether result was as expected.
+    '''
+    real_result = move(my_history, their_history, my_score, their_score)
+    if real_result == result:
+        return True
+    else:
+        print("move(" +
+            ", ".join(["'"+my_history+"'", "'"+their_history+"'",
+                       str(my_score), str(their_score)])+
+            ") returned " + "'" + real_result + "'" +
+            " and should have returned '" + result + "'")
+        return False
+
+if __name__ == '__main__':
+     
+    # Test 1: Betray on first move.
+    if test_move(my_history='',
+              their_history='', 
+              my_score=0,
+              their_score=0,
+              result='b'):
+         print ('Test passed')
+     # Test 2: Continue betraying if they collude despite being betrayed.
+    test_move(my_history='bbb',
+              their_history='ccc', 
+              # Note the scores are for testing move().
+              # The history and scores don't need to match unless
+              # that is relevant to the test of move(). Here,
+              # the simulation (if working correctly) would have awarded 
+              # 300 to me and -750 to them. This test will pass if and only if
+              # move('bbb', 'ccc', 0, 0) returns 'b'.
+              my_score=0, 
+              their_score=0,
+              result='b')
