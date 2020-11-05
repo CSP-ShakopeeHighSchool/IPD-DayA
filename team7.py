@@ -1,8 +1,9 @@
+'''
 ####
 # Each team's file must define four tokens:
-#     team_name: a string
-#     strategy_name: a string
-#     strategy_description: a string
+#     team_name: Team 7
+#     strategy_name: Collude until betrayed
+#     strategy_description: Colludes until betrayed but if 7 colludes pass, betray
 #     move: A function that returns 'c' or 'b'
 ####
 
@@ -65,4 +66,18 @@ if __name__ == '__main__':
               # move('bbb', 'ccc', 0, 0) returns 'b'.
               my_score=0, 
               their_score=0,
-              result='b')             
+              result='b')       
+'''      
+
+def team7():
+    opponent_collude = 0
+    return c
+    while their_history[-1] == c:
+        opponent_collude += 1
+        return c
+    while their_history[-1] == b:
+        opponent_collude = 0
+        return b
+    if opponent_collude == 7:
+        opponent_collude = 0
+        return b
