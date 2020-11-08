@@ -7,7 +7,7 @@
 ####
 
 team_name = 'liam murray' # Only 10 chars displayed.
-strategy_name = 'fucher black mail'
+strategy_name = 'future blackmail'
 strategy_description = 'if you step out of line I will all ways betray'
     
 def move(my_history, their_history, my_score, their_score):
