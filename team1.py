@@ -315,8 +315,8 @@ def move(my_history, their_history, my_score, their_score):
         
     else:
         bey = 0
-        for i in  range(len(their_history)):
-            if their_history[i] == 'b' : # Test to see if this works on most recent
+        for i in their_history:
+            if i == 'b' : # Test to see if this works on most recent
                 bey += 1
         if bey > 1:
             return 'b'
