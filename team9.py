@@ -6,12 +6,11 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'The name the team gives to itself' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
-strategy_description = 'How does this strategy decide?'
-    
-def move(my_history, their_history, my_score, their_score):
-    ''' Arguments accepted: my_history, their_history are strings.
+team_name = 'L9 team' # Only 10 chars displayed.
+strategy_name = 'Probe Strategy'
+strategy_description = 'Probes the opponents responses to betrayal and collusion during the first three rounds, and plays off that.'
+
+'''Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
     
     Make my move.
@@ -26,7 +25,18 @@ def move(my_history, their_history, my_score, their_score):
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
     
-    return 'c'
+    
+def move(my_history, their_history, my_score, their_score):
+    if len(my_history) == 0: #First move, always betrays.
+        return 'b'
+    if len(my_history) == 1: #Second move, always colludes.
+        return 'c'
+    if 'b' in their_history[0] and 'b' in their_history[1] and 'b' in their_history[2] or 'c' in their_history[0] and 'c' in their_history[1]: #Checks if opponent colluded or betrayed every move for the first two rounds.
+        return 'b' #If opponent passes check above, betray every round for the rest of the game.
+    if 'c' in their_history[0] and 'b' in their_history[1] and 'b' not in their_history[2:]: #Checks the opponent's response to your betrayal in move one assuming they did not collude or betray every probe round (one and two). Identifies if the opponent betrayed in move two as a result of your betrayal in move one and if they colluded in round three as a result of your collude in round two.
+        return 'c' #If opponent passes check above, colludes every round for the rest of the game until betrayed.
+    else:
+        return 'b' #If it is not the probing phase of the game (rounds one through two) and the opponent is not attempting to collude, betray for the rest of the game.
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
