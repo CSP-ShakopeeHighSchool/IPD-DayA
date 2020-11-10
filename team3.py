@@ -11,8 +11,6 @@ strategy_name = 'Strats'
 strategy_description = 'If their_score > my_score then Betray else if my_score > their_score Collude'
     
 def move(my_history, their_history, my_score, their_score):
-    their_score = 0
-    my_socre = 0
     if their_score > my_score:
         return 'b'
     else:
