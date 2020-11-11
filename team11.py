@@ -10,7 +10,7 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
-    if len(my_score) < 0:
+    if my_score < 0:
         return 'b'
     if 'b' in their_history[-8:]: 
         return 'b'
