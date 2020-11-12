@@ -26,20 +26,22 @@ def move(my_history, their_history, my_score, their_score):
 
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
+    #=====================OLD CODE START==============================
     #if their_history[-25:] == ['c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c','c',]:
         #return 'b'
     #if their_history[-1:] == ['c']:
         #return 'c'
     #if their_history[-1:] == ['b']:
         #return 'b'
-
+    #======================OLD CODE END===============================
+    #======================NEW CODE START=============================
     if my_score < 0:
         return 'b'
     if their_history[-1:] == ['b']:
         return 'b'
     else:
         return 'c'
-
+    #======================NEW CODE END===============================
 
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
