@@ -17,7 +17,26 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
-    
+    if 'b' in their_history or len(their_history) >= 195:
+        return 'b'
+    return 'c'
+
+    #if ('b' in my_history or len(my_history) == 199):
+     #   return 'b'
+    #count = 0.0
+    #if len(their_history) < 1: 
+    #    return 'c'
+    #for i in their_history:
+    #        if i == 'b':
+    #            count += 1
+    #if (count / len(their_history) > .2 and len(their_history) < 10):
+    #        return 'b'
+    #if (count / len(their_history) > .1):
+    #    return 'b'
+    #if len(their_history) > 100:
+    #    if (their_history[100] == 'b'):
+    #        return 'b'
+    #return 'c'
     # my_history: a string with one letter (c or b) per round that has been played with this opponent.
     # their_history: a string of the same length as history, possibly empty. 
     # The first round between these two players is my_history[0] and their_history[0].
@@ -25,13 +44,6 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
-    if 'b' in their_history or len(their_history) == 199:
-        return 'b'
-    for i in their_history:
-        if not( i == 'b' or i == 'c'):
-            return 'b'
-    return 'c'
-    
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
     from this module. Prints error if return value != result.
