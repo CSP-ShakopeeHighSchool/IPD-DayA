@@ -5,11 +5,12 @@
 #     strategy_name: Collude until betrayed
 #     strategy_description: Colludes until betrayed but if 7 colludes pass, betray
 #     move: A function that returns 'c' or 'b'
+# Test
 ####
 
 team_name = 'Team 7' # Only 10 chars displayed.
-strategy_name = 'Noahs Strat'
-strategy_description = 'Best strat in the multiverse'
+strategy_name = 'Noahs Strat test'
+strategy_description = 'How does this strategy decide?'
 
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
@@ -32,7 +33,6 @@ def move(my_history, their_history, my_score, their_score):
         return 'b'
     else:
         return 'c'
-    #======================NEW CODE END===============================
 
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
