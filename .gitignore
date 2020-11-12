@@ -8,3 +8,6 @@ __pycache__/
 # Generic platform files
 .DS_Store
 desktop.ini
+
+# Game results
+tournament.txt
