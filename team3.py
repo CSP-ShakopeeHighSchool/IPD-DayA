@@ -11,10 +11,10 @@ strategy_name = 'Strats'
 strategy_description = 'If their_score > my_score then Betray else if my_score > their_score Collude'
     
 def move(my_history, their_history, my_score, their_score):
-    if their_score > my_score:
+    if their_score > -100:
         return 'b'
     else:
-        if my_score > their_score:
+        if my_score > -200:
             return 'c' 
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
