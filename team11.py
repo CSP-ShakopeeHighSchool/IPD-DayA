@@ -1,19 +1,13 @@
-from importlib import reload
-import random
-import os.path
 
 team_name = 'AlexaBoots' 
 strategy_name = 'HistoryMatters'
-<<<<<<< Updated upstream
 strategy_description = 'How does this strategy decide?'
 
-import random
 
-=======
 strategy_description = '''It looks at my score and if my score is lower then 0 it choose betray
 if their history shows that they have betrayed in the last 8 turns it betrays. Otherwise it colludes'
 '''
->>>>>>> Stashed changes
+
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
@@ -21,16 +15,14 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
-<<<<<<< Updated upstream
-    if their_score > -50:
+    if my_score == 0:
         return 'b'
-=======
-    if my_score < 0:
-        return 'c'
->>>>>>> Stashed changes
     if 'b' in their_history[-8:]: 
-        return 'b'
-            
+            return 'b'
+    else:
+        return 'c'
+    if 'c' in my_history[-2]:
+            return 'b'
 
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
