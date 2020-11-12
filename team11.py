@@ -3,6 +3,8 @@ team_name = 'AlexaBoots'
 strategy_name = 'HistoryMatters'
 strategy_description = 'How does this strategy decide?'
 
+import random
+
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
@@ -10,12 +12,11 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
-    if my_score < 0:
+    if their_score > -50:
         return 'b'
     if 'b' in their_history[-8:]: 
         return 'b'
-    else:
-        return 'c'
+            
 
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
