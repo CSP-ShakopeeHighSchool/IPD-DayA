@@ -7,19 +7,18 @@
 ####
 
 team_name = 'Joe Grim' # Only 10 chars displayed.
-strategy_name = 'madcopycat'
+strategy_name = 'madrevenge'
 strategy_description = 'Collude until opponent betrays more than three times, then copy their last move for every round'
-    
+#Strategy: Collude until betrayed 3 times, then copy opponents last move    
+      
 def move(my_history, their_history, my_score, their_score):
-    count = 0
     for i in their_history:
-        if 'b' in their_history:
-            count += 1
-        if count > 3:
-            return their_history[-1]
+        if 'b' in their_history[-1]: 
+            return 'b'
+        if their_score > my_score:
+            return 'b'
         else:
-            return 'c'
-        
+             return 'c'                
   
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
