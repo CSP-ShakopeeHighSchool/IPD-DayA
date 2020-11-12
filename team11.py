@@ -3,6 +3,11 @@ team_name = 'AlexaBoots'
 strategy_name = 'HistoryMatters'
 strategy_description = 'How does this strategy decide?'
 
+
+strategy_description = '''It looks at my score and if my score is lower then 0 it choose betray
+if their history shows that they have betrayed in the last 8 turns it betrays. Otherwise it colludes'
+'''
+
 def move(my_history, their_history, my_score, their_score):
     ''' Arguments accepted: my_history, their_history are strings.
     my_score, their_score are ints.
@@ -10,12 +15,14 @@ def move(my_history, their_history, my_score, their_score):
     Make my move.
     Returns 'c' or 'b'. 
     '''
-    if my_score < 0:
+    if my_score == 0:
         return 'b'
     if 'b' in their_history[-8:]: 
-        return 'b'
+            return 'b'
     else:
         return 'c'
+    if 'c' in my_history[-2]:
+            return 'b'
 
 def test_move(my_history, their_history, my_score, their_score, result):
     '''calls move(my_history, their_history, my_score, their_score)
@@ -53,4 +60,4 @@ if __name__ == '__main__':
               # move('bbb', 'ccc', 0, 0) returns 'b'.
               my_score=0, 
               their_score=0,
-              result='b')             
+              result='b')
